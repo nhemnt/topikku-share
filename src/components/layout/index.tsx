@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useIsCollapsed from '@/hooks/use-is-collapsed';
 import Sidebar from '../sidebar';
-import { LayoutHeader } from './layout';
+import { LayoutBody, LayoutHeader } from './layout';
 import ThemeSwitch from '../theme-switch';
 import { UserNav } from '../user-nav';
 
@@ -49,7 +49,10 @@ const Layout: React.FC<LayoutProps> = ({
                             </div>
                         </div>
                     </LayoutHeader>
-                    {children}
+                    <LayoutBody className='space-y-4'>
+                        {children}
+                    </LayoutBody>
+                   
                 </main>
             </div>
         )
