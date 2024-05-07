@@ -1,7 +1,8 @@
 import { UserAuthForm } from '@/components/auth/user-auth-form'
+import { withLayout } from '@/components/layout';
 // import ViteLogo from '@/assets/vite.svg'
 
-export default function SignIn() {
+function SignIn() {
   return (
     <>
       <div className='container relative grid h-svh flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0'>
@@ -75,3 +76,11 @@ export default function SignIn() {
     </>
   )
 }
+
+
+export default withLayout( SignIn, {
+  header: false,
+  footer: false,
+  auth: false,
+  className: null,
+} );
