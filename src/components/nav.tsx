@@ -26,7 +26,7 @@ import { SideLink } from '@/data/sidelinks'
 import Link from 'next/link'
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
-  isCollapsed: boolean
+  isCollapsed: boolean | undefined
   links: SideLink[]
   closeNav: () => void
 }

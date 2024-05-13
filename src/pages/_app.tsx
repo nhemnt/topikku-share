@@ -1,9 +1,10 @@
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import "@/styles/globals.css";
 import { ThemeProvider } from "next-themes";
-import { AppProps } from "next/app";
+import { ClerkProvider } from '@clerk/nextjs'
 
-interface CustomAppProps  {
+
+interface CustomAppProps {
   authState: boolean;
   Component: any;
   pageProps: any;
@@ -13,24 +14,26 @@ export default function App(props: CustomAppProps) {
     authState,
     Component,
     Component: {
-        layout,
-        options = {},
+      layout,
+      options = {},
     },
     pageProps,
-} = props;
+  } = props;
 
-const {
-   error,
+  const {
+    error,
     ...compProps } = pageProps;
 
-const Layout = layout || ( ( page: any ) => page );
+  const Layout = layout || ((page: any) => page);
 
   return (
-    <ThemeProvider defaultTheme='light' storageKey='theme' attribute='class'>
-      <Layout error={ error } { ...options }>
-        <Component { ...compProps }/>
-      </Layout>
-      <TailwindIndicator />
-    </ThemeProvider>
+    <ClerkProvider>
+      <ThemeProvider defaultTheme='light' storageKey='theme' attribute='class'>
+        <Layout error={error} {...options}>
+          <Component {...compProps} />
+        </Layout>
+        <TailwindIndicator />
+      </ThemeProvider>
+    </ClerkProvider>
   );
 }

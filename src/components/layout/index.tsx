@@ -4,7 +4,11 @@ import useIsCollapsed from '@/hooks/use-is-collapsed';
 import Sidebar from '../sidebar';
 import { LayoutBody, LayoutHeader } from './layout';
 import ThemeSwitch from '../theme-switch';
-import { UserNav } from '../user-nav';
+// import { UserNav } from '../user-nav';
+// import { useAuth } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
+
 
 interface LayoutProps {
     auth?: boolean;
@@ -15,8 +19,7 @@ interface LayoutProps {
     errorRecoverCallback?: () => void;
     footer?: boolean;
     header?: boolean;
-    // localeId: string;
-    [key: string]: any; // Additional attributes
+    [key: string]: any; 
 }
 
 const Layout: React.FC<LayoutProps> = ({
@@ -45,7 +48,12 @@ const Layout: React.FC<LayoutProps> = ({
                         <div className='flex w-full items-center justify-end'>
                             <div className='flex items-center space-x-4'>
                                 <ThemeSwitch />
-                                <UserNav />
+                                <SignedOut>
+                                <SignInButton />
+                                </SignedOut>
+                                <SignedIn>
+                                <UserButton />
+                                </SignedIn>
                             </div>
                         </div>
                     </LayoutHeader>

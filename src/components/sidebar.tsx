@@ -8,8 +8,8 @@ import { sidelinks } from '@/data/sidelinks'
 import { SUB_TITLE, TITLE } from '@/library/constants'
 
 interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
-  isCollapsed: boolean
-  setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
+  isCollapsed: boolean | undefined
+  setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>> | any
 }
 
 export default function Sidebar({
@@ -38,7 +38,6 @@ export default function Sidebar({
       {/* Overlay in mobile */}
       <div
         onClick={() => {
-          debugger
           setNavOpened(false)
         }}
         className={`absolute inset-0 transition-[opacity] delay-100 duration-700 ${navOpened ? 'h-svh opacity-50' : 'h-0 opacity-0'} w-full bg-black md:hidden`}
@@ -77,7 +76,6 @@ export default function Sidebar({
           id='sidebar-menu'
           className={`h-full flex-1 overflow-auto ${navOpened ? 'max-h-screen' : 'max-h-0 py-0 md:max-h-screen md:py-2'}`}
           closeNav={() => {
-            debugger
             setNavOpened(false)
           }}
           isCollapsed={isCollapsed}
@@ -87,8 +85,7 @@ export default function Sidebar({
         {/* Scrollbar width toggle button */}
         <Button
           onClick={() => {
-            debugger
-            setIsCollapsed((prev) => !prev)}
+            setIsCollapsed((prev: boolean) => !prev)}
           }
           size='icon'
           variant='outline'

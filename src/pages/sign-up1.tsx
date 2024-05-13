@@ -1,9 +1,10 @@
 import { Card } from '@/components/ui/card'
 import { SignUpForm } from '@/components/auth/sign-up-form'
 import Link from 'next/link'
+import { withLayout } from '@/components/layout';
 
 
-export default function SignUp() {
+function SignUp() {
   return (
     <>
       <div className='container grid h-svh flex-col items-center justify-center bg-primary-foreground lg:max-w-none lg:px-0'>
@@ -63,3 +64,11 @@ export default function SignUp() {
     </>
   )
 }
+
+
+export default withLayout( SignUp, {
+  header: false,
+  footer: false,
+  auth: false,
+  className: null,
+} );

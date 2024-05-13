@@ -1,18 +1,13 @@
 import { withLayout } from "@/components/layout";
 
-
-function Home() {
-   
-  
-    
-    return <h1>Topikku Share</h1>;  
+function Custom500() {
+    return <h1>500 - Server-side error occurred</h1>
 }
 
-
-
-export default withLayout(Home, {
+export default withLayout
+(Custom500, {
     header: false,
     footer: false,
     auth: false,
     className: null,
-  } );
+});
